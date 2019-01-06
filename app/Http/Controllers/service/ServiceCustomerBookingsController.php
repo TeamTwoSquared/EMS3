@@ -5,6 +5,7 @@ namespace App\Http\Controllers\service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\serviceCustomerBooking;
+use App\Client;
 
 
 use Intervention\Image\ImageManagerStatic as Image;
@@ -22,7 +23,7 @@ class ServiceCustomerBookingsController extends Controller
         $client_all = Array();
         foreach($serviceCustomerBookings as $serviceCustomerBooking)
         {
-            $client = Service::where('customer_id',$serviceCustomerBooking->customer_id)->get();
+            $client = Client::where('customer_id',$serviceCustomerBooking->customer_id)->get();
             $client = $client[0];
             $client_all = array_prepend($client_all,$client);
         }
